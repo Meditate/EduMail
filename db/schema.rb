@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411111341) do
+ActiveRecord::Schema.define(version: 20150414082834) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150411111341) do
     t.string   "edu_password"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "email"
   end
 
   add_index "edumails", ["user_id"], name: "index_edumails_on_user_id"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150411111341) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

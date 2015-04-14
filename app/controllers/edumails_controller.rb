@@ -1,8 +1,9 @@
 class EdumailsController < ApplicationController
   before_action :find_edumail, only: [:show,:update,:edit,:destroy]
-
+  before_filter :authenticate_user!
   def index
     @edumails=Edumail.all
+    @edumail=Edumail.where(email: current_user.email).order('updated_at DESC').first
   end
 
   def new
@@ -10,8 +11,10 @@ class EdumailsController < ApplicationController
   end
 
   def create
-    @edumail=current_user.edumails.build(edumails_params)
-
+    @edumail=Edumail.create
+    @edumail.status="Pending"
+    @edumail.user_id=current_user.id
+    @edumail.email= current_user.email
     if @edumail.save
       redirect_to root_path
     else
@@ -37,7 +40,7 @@ class EdumailsController < ApplicationController
 
   private
 
-  def edumails_params
+  def edumail_params
     params.require(:id).permit()
   end
 

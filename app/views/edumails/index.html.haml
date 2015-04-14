@@ -1,0 +1,24 @@
+%h1 Hallo
+
+-if user_signed_in?
+  =link_to "log in", new_user_session_path
+  =link_to "Sign in", new_user_registration_path
+  =link_to "Log Out", destroy_user_session_path, method: :delete
+  -if(@edumails.where(email: current_user.email).count > 0)
+    -if @edumail.status == "Approved"
+      %p=@edumail.edu_mail
+      %p=@edumail.edu_password
+    -else
+      %p=@edumail.updated_at
+  -else
+    %p=link_to "new Request", new_edumail_path
+-if current_user.role == "admin"
+  =simple_form_for(@edumail)
+    
+  -@edumails.each do |edumail|
+
+    %p=edumail.email
+    %p=edumail.updated_at
+
+    %p=link_to "Approve",
+
