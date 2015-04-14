@@ -6,11 +6,11 @@ This is our project, which we make with Punkbooster.
 
 Gems which we used:
 
-gem 'haml'
-gem 'devise', '~> 3.4.1'
-gem 'bootstrap-sass'
-gem 'simple_form'
-gem 'figaro'
+* gem 'haml'
+* gem 'devise', '~> 3.4.1'
+* gem 'bootstrap-sass'
+* gem 'simple_form'
+* gem 'figaro'
 
 Universities can use our app for approving the university mail adresses. 
 
