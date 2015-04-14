@@ -16,6 +16,8 @@ gem 'devise', '~> 3.4.1'
 gem 'bootstrap-sass'
 gem 'simple_form'
 
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

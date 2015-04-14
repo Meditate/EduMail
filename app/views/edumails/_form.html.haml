@@ -2,5 +2,5 @@
   -if current_user.role == 'admin'
     %p=f.input :edu_mail
     %p=f.input :edu_password
-    %p=f.input :status
+    %p=f.input  :status, collection: [ "Pending", "Approved"]
   = f.button :submit

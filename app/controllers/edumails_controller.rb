@@ -28,6 +28,7 @@ class EdumailsController < ApplicationController
   end
 
   def update
+
     if @edumail.update(edumail_params)
       redirect_to root_path
     else
@@ -41,7 +42,8 @@ class EdumailsController < ApplicationController
   end
 
   def destroy
-
+    @edumail.destroy
+    redirect_to root_path
   end
 
   private

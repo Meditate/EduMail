@@ -1,20 +1,32 @@
-%h1 Hallo
-
 -if user_signed_in?
-  =link_to "log in", new_user_session_path
-  =link_to "Sign in", new_user_registration_path
-  =link_to "Log Out", destroy_user_session_path, method: :delete
-  -if(@edumails.where(email: current_user.email).count > 0)
-    -if @edumail.status == "Approved"
-      %p=@edumail.edu_mail
-      %p=@edumail.edu_password
-    -else
-      %p=@edumail.updated_at
+  -if current_user.role == "admin"
+    %h1 Hallo admin
+    =link_to "Log Out", destroy_user_session_path, method: :delete
+    -@edumails.where("status = 'Pending'").each do |edumail|
+      %br/
+      =edumail.email
+      =edumail.updated_at
+      %br/
+      =link_to "Approve", edit_edumail_path(edumail)
+      |
+      =link_to "Delete", edumail_path(edumail), method: :delete
   -else
-    %p=link_to "new Request", new_edumail_path
--if current_user.role == "admin"
-  -@edumails.where("status = 'Pending'").each do |edumail|
-    %p=edumail.email
-    %p=edumail.updated_at
-    %p=link_to "Approve", edit_edumail_path(edumail)
+    %h1 Hallo user
+    -if(@edumails.where(email: current_user.email).count > 0)
+      %p=link_to "Log Out", destroy_user_session_path, method: :delete
+      Your edu-mail:
+      =@edumail.edu_mail
+      %br/
+      Your edu-pass:
+      =@edumail.edu_password
+      %br/
+      Status of your request:
+      =@edumail.status
+      %br/
 
+      -if @edumail.status=="Pending"
+        =@edumail.email
+        =@edumail.updated_at
+    -else
+      You dont have requests for edumail
+      %p=link_to "new Request", new_edumail_path
