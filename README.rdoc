@@ -16,6 +16,6 @@ Universities can use our app for approving the university mail adresses.
 
 How to register your edumail:
 
-1.Register
-2.Send new request
-3.Wait till admin approve your request 
+* 1.Register
+* 2.Send new request
+* 3.Wait till admin approve your request 
