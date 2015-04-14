@@ -1,2 +1,6 @@
 = simple_form_for(@edumail) do |f|
+  -if current_user.role == 'admin'
+    %p=f.input :edu_mail
+    %p=f.input :edu_password
+    %p=f.input :status
   = f.button :submit

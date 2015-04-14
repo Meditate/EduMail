@@ -13,12 +13,8 @@
   -else
     %p=link_to "new Request", new_edumail_path
 -if current_user.role == "admin"
-  =simple_form_for(@edumail)
-    
-  -@edumails.each do |edumail|
-
+  -@edumails.where("status = 'Pending'").each do |edumail|
     %p=edumail.email
     %p=edumail.updated_at
-
-    %p=link_to "Approve",
+    %p=link_to "Approve", edit_edumail_path(edumail)
 
