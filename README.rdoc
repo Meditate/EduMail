@@ -1,28 +1,21 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hallo!
 
-Things you may want to cover:
+This is our project, which we make with Punkbooster.
 
-* Ruby version
+Gems which we used:
 
-* System dependencies
+gem 'haml'
+gem 'devise', '~> 3.4.1'
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'figaro'
 
-* Configuration
+Universities can use our app for approving the university mail adresses. 
 
-* Database creation
+How to register your edumail:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1.Register
+2.Send new request
+3.Wait till admin approve your request 
