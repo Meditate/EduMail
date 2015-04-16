@@ -6,10 +6,15 @@
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 %body
-  -if user_signed_in?
-    -if current_user.role == "admin"
-      %h1 Hallo admin
-    -else
-      %h1 Hallo user
-  =yield
+  .nav.navbar.navbar-default
+    -if user_signed_in?
+      .logo
+        -if current_user.role == "admin"
+          %h1 Hallo admin
+        -else
+          %h1 Hallo user
+      .user-panel
+        =link_to "Log Out", destroy_user_session_path, method: :delete
+  .panel.panel-default
+    =yield
 

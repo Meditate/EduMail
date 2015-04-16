@@ -28,7 +28,7 @@ class EdumailsController < ApplicationController
   end
 
   def update
-
+    Edumailer.approve_email(@edumail).deliver_now
     if @edumail.update(edumail_params)
       redirect_to root_path
     else

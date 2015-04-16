@@ -1,5 +1,4 @@
 -if current_user.role == "admin"
-  =link_to "Log Out", destroy_user_session_path, method: :delete
   -@edumails.where("status = 'Pending'").each do |edumail|
     %br/
     =edumail.imie
@@ -13,7 +12,6 @@
     =link_to "Delete", edumail_path(edumail), method: :delete
 -else
   -if(@edumails.where(email: current_user.email).count > 0)
-    %p=link_to "Log Out", destroy_user_session_path, method: :delete
     Your edu-mail:
     =@edumail.edu_mail
     %br/
