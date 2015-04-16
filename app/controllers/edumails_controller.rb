@@ -12,7 +12,7 @@ class EdumailsController < ApplicationController
   end
 
   def create
-    @edumail=Edumail.create
+    @edumail=Edumail.new(edumail_params)
     @edumail.status="Pending"
     @edumail.user_id=current_user.id
     @edumail.email= current_user.email
@@ -49,7 +49,7 @@ class EdumailsController < ApplicationController
   private
 
   def edumail_params
-    params.require(:edumail).permit(:edu_mail,:edu_password,:status)
+    params.require(:edumail).permit(:edu_mail,:edu_password,:status,:nr_albumu,:imie,:nazwisko,:rok_nauczenia,:faculty)
   end
 
   def find_edumail

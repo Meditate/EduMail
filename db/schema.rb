@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414082834) do
+ActiveRecord::Schema.define(version: 20150416090028) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,9 +36,14 @@ ActiveRecord::Schema.define(version: 20150414082834) do
     t.string   "status"
     t.string   "edu_mail"
     t.string   "edu_password"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "email"
+    t.integer  "nr_albumu"
+    t.integer  "rok_nauczenia"
+    t.string   "faculty"
+    t.string   "imie"
+    t.string   "nazwisko"
   end
 
   add_index "edumails", ["user_id"], name: "index_edumails_on_user_id"

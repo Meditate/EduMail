@@ -1,6 +1,21 @@
 = simple_form_for(@edumail) do |f|
   -if current_user.role == 'admin'
+    Email:
+    =@edumail.email
+    %br/
+    Imie:
+    =@edumail.imie
+    %br/
+    Nazwisko:
+    =@edumail.nazwisko
     %p=f.input :edu_mail
     %p=f.input :edu_password
     %p=f.input  :status, collection: [ "Pending", "Approved"]
+  -else
+    %p=f.input :imie, :required => true
+    %p=f.input :nazwisko, :required => true
+    %p=f.input :faculty, :required => true
+    %p=f.input :nr_albumu, :required => true
+    %p=f.input :rok_nauczenia, :required => true
   = f.button :submit
+  =link_to "back", root_path, class: "btn btn-default"

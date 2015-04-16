@@ -1,32 +1,37 @@
--if user_signed_in?
-  -if current_user.role == "admin"
-    %h1 Hallo admin
-    =link_to "Log Out", destroy_user_session_path, method: :delete
-    -@edumails.where("status = 'Pending'").each do |edumail|
-      %br/
-      =edumail.email
-      =edumail.updated_at
-      %br/
-      =link_to "Approve", edit_edumail_path(edumail)
-      |
-      =link_to "Delete", edumail_path(edumail), method: :delete
-  -else
-    %h1 Hallo user
-    -if(@edumails.where(email: current_user.email).count > 0)
-      %p=link_to "Log Out", destroy_user_session_path, method: :delete
-      Your edu-mail:
-      =@edumail.edu_mail
-      %br/
-      Your edu-pass:
-      =@edumail.edu_password
-      %br/
-      Status of your request:
-      =@edumail.status
-      %br/
+-if current_user.role == "admin"
+  =link_to "Log Out", destroy_user_session_path, method: :delete
+  -@edumails.where("status = 'Pending'").each do |edumail|
+    %br/
+    =edumail.imie
+    =edumail.nazwisko
+    =edumail.nr_albumu
+    =edumail.email
+    =edumail.updated_at
+    %br/
+    =link_to "Approve", edit_edumail_path(edumail)
+    |
+    =link_to "Delete", edumail_path(edumail), method: :delete
+-else
+  -if(@edumails.where(email: current_user.email).count > 0)
+    %p=link_to "Log Out", destroy_user_session_path, method: :delete
+    Your edu-mail:
+    =@edumail.edu_mail
+    %br/
+    Your edu-pass:
+    =@edumail.edu_password
+    %br/
+    Status of your request:
+    =@edumail.status
+    %br/
 
-      -if @edumail.status=="Pending"
-        =@edumail.email
-        =@edumail.updated_at
-    -else
-      You dont have requests for edumail
-      %p=link_to "new Request", new_edumail_path
+    -if @edumail.status=="Pending"
+      =@edumail.imie
+      =@edumail.nazwisko
+      =@edumail.nr_albumu
+      =@edumail.faculty
+      =@edumail.email
+      =@edumail.updated_at
+      =link_to "Delete", edumail_path(@edumail), method: :delete
+  -else
+    You dont have requests for edumail
+    %p=link_to "new Request", new_edumail_path
