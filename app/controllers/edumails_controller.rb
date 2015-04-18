@@ -12,11 +12,15 @@ class EdumailsController < ApplicationController
   end
 
   def create
+
     @edumail=Edumail.new(edumail_params)
     @edumail.status="Pending"
     @edumail.user_id=current_user.id
     @edumail.email= current_user.email
+    @edumail.edu_mail="To be approved"
+    @edumail.edu_password="To be approved"
     if @edumail.save
+      flash[:notice] = "Your request was seccessfully created, We will inform you to your email address"
       redirect_to root_path
     else
       render 'new'
@@ -28,8 +32,9 @@ class EdumailsController < ApplicationController
   end
 
   def update
-    Edumailer.approve_email(@edumail).deliver_now
+    
     if @edumail.update(edumail_params)
+      Edumailer.approve_email(@edumail).deliver
       redirect_to root_path
     else
       render "edit"
