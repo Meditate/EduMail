@@ -23,6 +23,8 @@
     %br/
 
     -if @edumail.status=="Pending"
+      - if flash[:notice]
+        .notice= flash[:notice]
       =@edumail.imie
       =@edumail.nazwisko
       =@edumail.nr_albumu
