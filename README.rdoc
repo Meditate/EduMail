@@ -2,7 +2,7 @@
 
 Hallo!
 
-This is our project, which we make with Punkbooster.
+This is our project, which we made with Punkbooster.
 
 Gems which we used:
 
