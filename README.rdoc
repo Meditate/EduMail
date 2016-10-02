@@ -1,4 +1,6 @@
-== README
+== EdueMail approving system
+
+Code refactoring comming soon...
 
 Hallo!
 
